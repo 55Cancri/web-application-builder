@@ -1,0 +1,86 @@
+component:
+scene: a page of your application
+service: a feature
+
+----------------------------------------------------
+
+component: can define nested components or services. Cannot use or define scenes.
+
+    They are global components that can be used anywhere in application. However, if you nest a component inside of another component, that new component can only be used by its direct parent. You may want to do this when you know that component will only be used explicitly by that component and no where else in your application.
+
+    Use: At the root level, define main components that will be reused such as buttons, form fields, thumbnails, and even complicated ones like listComments and formComposer.
+
+
+
+scene: can define nested components, scenes or services. It is just like any component. If using React-Router or React Native Router, you can import all your scenes in your main index.js file and setup routes. Remember, if you nest something within a scene, you can only use it within the scene folder itself.
+
+
+service: can define nested services. Cannot use or define components or scenes. Services are NOT components, they are self contained modules that define the core business logic of application. They can eventually be shared between several scenes or even applications, such as a web and native version of your app. Services manage api requests (I guess queries to the database?). They are essentially a bridge/adapter between server API and the view layer (scenes and components) of application. Can handle network calls, get and post content, and transform payloads as needed before being sent or saved in the store of the app (such as Redux). The scenes and components will 1) DISPATCH actions, 2) READ the store, and 3) update themselves based on the new changes.
+
+
+· nested features can only use from parent, grandparent, great-grandparent, etc. Cannot use a feature from a cousin. Must be moved to parent in order to use.
+
+----------------------------------------------------
+
+EXAMPLES:
+
+This file structure is about components
+
+/src
+  /components
+    /Button             // button can be used anywhere
+      /index.js
+
+    /Notifications      // notifications can be used anywhere
+      /components
+        /ButtonDismiss  // uses Button in its index.js
+          /index.js
+
+      /actions.js
+      /index.js
+      /reducer.js
+
+
+
+This file structure is about scenes
+
+/src
+  /scenes
+    /Home
+      /components
+        /ButtonShare  // can only be used by Home scene
+          /index.js
+      /index.js
+    /Sign
+      /components
+        /ButtonHelp   // can be used by Login or Register scenes
+          /index.js
+      /scenes
+        /Login
+          /components
+            /Form     // uses ButtonHelp in its index.js
+              /index.js
+            /ButtonFacebookLogin
+              /index.js
+          /index.js
+
+        /Register   // cant use nothing in Login; but ButtonHelp
+          /index.js
+      /index.js
+
+
+
+This file structure is about services
+
+/src
+  /services
+    /api
+      /services
+        /handleError
+          /index.js
+      /index.js
+    /geolocation
+    /session
+      /actions.js
+      /index.js
+      /reducer.js
