@@ -29,11 +29,13 @@ module.exports = {
   },
 
   module: {
-    preloaders: [{
-      test: /\.sass/,
-      loader: 'import-glob-loader'
-    }],
     rules: [
+      // absolutely necessary for font-awesome
+      // you NEED the file-loader & css-loader modules
+      {
+        test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot)(\?.*$|$)/,
+        loader: 'file-loader'
+      },
       // JS files
       {
         test: /\.jsx?$/,
@@ -42,8 +44,12 @@ module.exports = {
       },
 
       // SCSS files
+      // or test: /(\.scss|\.sass)$/,
+      // or test: /.(scss|sass)$/,
+      // or test: /.s[ac]ss$/,
+      // verdict: none of the above required!
       {
-        test: /\.sass$/,
+        test: /.sass$/,
         loader: ExtractTextPlugin.extract({
           fallback: 'style-loader',
           use: [

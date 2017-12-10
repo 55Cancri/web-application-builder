@@ -17,6 +17,8 @@ import NotFound from './scenes/NotFound/notFound.jsx'
 
 import './styles.sass'
 
+// import '~/node_modules/font-awesome/scss/font-awesome.scss'
+
 render((
   <div>
     <Router>
