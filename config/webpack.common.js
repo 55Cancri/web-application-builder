@@ -1,10 +1,10 @@
-const webpack = require('webpack')
-const autoprefixer = require('autoprefixer')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
+import webpack from 'webpack'
+import autoprefixer from 'autoprefixer'
+import HtmlWebpackPlugin from 'html-webpack-plugin'
+import ExtractTextPlugin from 'extract-text-webpack-plugin'
+import CopyWebpackPlugin from 'copy-webpack-plugin'
 
-const helpers = require('./helpers')
+import helpers from './helpers'
 
 const NODE_ENV = process.env.NODE_ENV
 const isProd = NODE_ENV === 'production'
@@ -40,7 +40,15 @@ module.exports = {
       {
         test: /\.jsx?$/,
         include: helpers.root('client'),
-        loader: 'babel-loader'
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: "babel-loader",
+            // options: {
+            //   "presets": [["env", {"modules": false}], "react"]
+            // }
+          }
+        ]
       },
 
       // SCSS files

@@ -1,15 +1,16 @@
-const bodyParser = require('body-parser')
-const express = require('express')
-const fs = require('fs')
-const historyApiFallback = require('connect-history-api-fallback')
-const mongoose = require('mongoose')
-const path = require('path')
-const webpack = require('webpack')
-const webpackDevMiddleware = require('webpack-dev-middleware')
-const webpackHotMiddleware = require('webpack-hot-middleware')
+// default modules
+import express from 'express'
+import path from 'path'
+import bodyParser from 'body-parser'
+import fs from 'fs'
+import historyApiFallback from 'connect-history-api-fallback'
+import mongoose from 'mongoose'
+import webpack from 'webpack'
+import webpackDevMiddleware from 'webpack-dev-middleware'
+import webpackHotMiddleware from 'webpack-hot-middleware'
 
-const config = require('../config/config')
-const webpackConfig = require('../webpack.config')
+import config from '../config/config'
+import webpackConfig from '../webpack.config'
 
 const isDev = process.env.NODE_ENV !== 'production'
 const port  = process.env.PORT || 8080
@@ -29,7 +30,9 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
 // API routes
-require('./routes')(app)
+// to convert this => require('./routes')(app), use:
+import Routes from './routes'
+const routes = Routes(app)
 
 if (isDev) {
   const compiler = webpack(webpackConfig)
@@ -69,4 +72,4 @@ app.listen(port, '0.0.0.0', (err) => {
   console.info('>>> 🌎 Open http://0.0.0.0:%s/ in your browser.', port)
 })
 
-module.exports = app
+export default app

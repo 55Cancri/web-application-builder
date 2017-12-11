@@ -1,8 +1,8 @@
-const webpack = require('webpack')
-const merge = require('webpack-merge')
+import webpack from 'webpack'
+import merge from 'webpack-merge'
 
-const helpers = require('./helpers')
-const commonConfig = require('./webpack.common')
+import helpers from './helpers'
+import commonConfig from './webpack.common'
 
 module.exports = merge(commonConfig, {
   output: {
