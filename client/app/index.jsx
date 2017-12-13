@@ -7,6 +7,9 @@ import {
   Switch
 } from 'react-router-dom'
 
+
+
+import LoginPage from './scenes/Sign/scenes/Login/index.jsx'
 import Header from './components/Header/Header.jsx'
 import Footer from './components/Footer/Footer.jsx'
 import Home from './components/Home/Home.jsx'
@@ -20,12 +23,13 @@ import './styles.sass'
 // import '~/node_modules/font-awesome/scss/font-awesome.scss'
 
 render((
-  <div>
+  <div className = "wrapper">
     <Router>
       <div>
         <Header />
         <Switch>
           <Route exact path="/" component={Home}/>
+          <Route path="/login" component={LoginPage}/>
           <Route path="/stuff" component={Stuff}/>
           <Route path="/contact" component={Contact}/>
         </Switch>

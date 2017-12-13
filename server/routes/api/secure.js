@@ -1,4 +1,4 @@
-const Counter = require('../../models/Counter')
+import Counter from '../../models/Counter'
 
 module.exports = (app) => {
 

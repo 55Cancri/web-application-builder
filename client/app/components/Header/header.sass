@@ -1,3 +1,31 @@
-a
-  text-decoration: none
-  color: red
+.navbar
+  padding: 10px 10px
+  align-items: center
+
+  ul
+    display: flex
+    list-style-type: none
+    margin: 0
+    padding: 0
+
+  li
+    text-decoration: none
+    cursor: pointer
+    &:not(:first-of-type):not(.search)
+      margin-right: 10px
+
+  a
+    text-decoration: none
+
+  .search
+    margin: 0 auto
+    input
+      border: none
+      outline: none
+      padding: 3px 5px
+      &:focus
+        border: 1px solid grey
+        border-radius: 2px
+
+  .fa-chevron-down, .fa-search
+    margin: 0 5px

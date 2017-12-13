@@ -27,7 +27,12 @@ module.exports = {
       'app': 'client/app'
     }
   },
-
+  stats: {
+    colors: true,
+    modules: true,
+    reasons: true,
+    errorDetails: true
+  },
   module: {
     rules: [
       // absolutely necessary for font-awesome

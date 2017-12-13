@@ -1,4 +1,13 @@
 // default modules
+
+/* the way this works is that webpack ONLY compliles from the folder you tell it—in our case: "client".
+
+· Webpack does NOT start any servers, or is not some seperate server entity. Instead, an npm script starts the server normally with either node, babel-node, or nodemon, just all your other apps, and then WITHIN the server file, webpack is started, which begins the compilation process. You can see how this works in the code below.
+
+· In the webpack code below, it also pulls in the config files that you defined in other folders detailing the entry point folder (client), and the output (dist).
+
+· All in all, this works exactly like you have learned that node/express servers work, except webpack is incorporated as middleware, bundling and servering the files, as opposed to express serving a pug folder.
+*/
 import express from 'express'
 import path from 'path'
 import bodyParser from 'body-parser'

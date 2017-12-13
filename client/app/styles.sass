@@ -9,3 +9,26 @@ $fa-font-path: "~font-awesome/fonts"
 @import 'styles/vendor/normalize'
 
 @import 'components/Header/header.sass'
+
+
+// global layout
+
+body, html
+  height: 100%
+
+body
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif
+  text-rendering: optimizedLegibility
+  -webkit-font-smoothing: antialiased
+  -moz-osx-font-smoothing: grayscale
+
+.wrapper
+  display: grid
+  grid-template-columns: repeat(12, [col-start] 1fr)
+  grid-template-rows: repeat(3, 1fr)
+  grid-gap: 20px
+  padding: 0
+  height: 100vh
+
+  *
+    grid-column: col-start / span 12

@@ -6,11 +6,21 @@ import './header.sass'
 
 const Header = () => (
   <header>
-    <nav>
+    <nav className = "navbar">
       <ul>
-        <li><Link to="/"><i className="fa fa-close fa-spin"></i>Home</Link></li>
-        <li><Link to="/stuff">Stuff</Link></li>
-        <li><Link to="/contact">Contact</Link></li>
+        <li><Link to = "/"><i className = "fa fa-bars"></i></Link></li>
+        <li className = "search">
+          <i className = "fa fa-search"></i>
+          <input type="text" placeholder="search"/>
+        </li>
+        <li>Eric<i className = "fa fa-chevron-down"></i></li>
+        <li><i className = "fa fa-send"></i></li>
+        <li><i className = "fa fa-calendar"></i></li>
+        <li><i className = "fa fa-cog"></i></li>
+        {/*
+          <li><Link to="/stuff">Stuff</Link></li>
+          <li><Link to="/contact">Contact</Link></li>
+        */}
       </ul>
     </nav>
   </header>
