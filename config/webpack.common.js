@@ -22,7 +22,7 @@ module.exports = {
   },
 
   resolve: {
-    extensions: ['.js', '.json', '.css', '.scss', '.html'],
+    extensions: ['.js', '.jsx', '.json', '.css', '.scss', '.html'],
     alias: {
       'app': 'client/app'
     }
@@ -33,6 +33,7 @@ module.exports = {
     reasons: true,
     errorDetails: true
   },
+  devtool: 'cheap-eval-source-map',
   module: {
     rules: [
       // absolutely necessary for font-awesome

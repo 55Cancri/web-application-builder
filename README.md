@@ -1,3 +1,9 @@
+
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+
+
+
 # MERN-boilerplate
 
 This is a boilerplate project using the following technologies:
