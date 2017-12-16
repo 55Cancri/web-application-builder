@@ -45,12 +45,27 @@ class LoginForm extends React.Component {
     })
   }
 
+/*
+
+//-----------------------
+
+STEP 8 (redux): In case there is an error with the response or at any other place in this long chain of promises, redux, and react, it will be placed in the .catch() method. That method can be appended to the component that calls 'this.props.submit(this.state.data)' (the submit function of the submit button) since if you look at the actual sumbit function, defined in the LoginPage component (../../index.jsx), it returns a promise. ALSO, another reason you are appending it to the onSubmit function is because remember, even though we are using redux for global state management (getting user data and token), we are using LOCAL state for the form. So in the catch method of the CALLED submit function (not the actual defined submit function), the .catch() method is appended.
+
+Recall that in the local state of this component, there are 3 properties: data, loading, and errors. In the catch method below, the setState({}) method is used (which is only used for setting local state, otherwise redux is used), and it sets the errors property equal to the response property of the err object passed into the catch method. Specifically, that response property also contains a property called data, which itself contains a property called errors. It is here that the values are used to update the error state.
+
+
+
+**That's it!!! Redux > backend > state in 8 steps!!!**
+*/
+
   onSubmit = (e) => {
     e.preventDefault()
     const errors = this.validate(this.state.data)
     this.setState({ errors })
     if (Object.keys(errors).length === 0) {
-      this.props.submit(this.state.data)
+      this.props.submit(this.state.data).catch(err => {
+        this.setState({ errors: err.response.data.errors })
+      })
     }
   }
 
@@ -74,6 +89,12 @@ class LoginForm extends React.Component {
 
     return (
       <form className="form login-form" onSubmit={this.onSubmit}>
+        {/*
+          If global errors exist, spawn a message div. This will be for server-side errors.
+        */}
+        { errors.global && <div className="error-popup">
+          <p>{errors.global}</p>
+        </div>}
         <h1>Login page</h1>
         <label htmlFor="email">Email</label>
         <input

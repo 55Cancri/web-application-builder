@@ -1,9 +1,9 @@
-{/*
+/*
 This is where all of your SCENES will be loaded on to each route.
 
 Here you will define your app as a class.
 This is very important in order to have things working properly in nested components.
-*/}
+*/
 
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'

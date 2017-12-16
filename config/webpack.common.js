@@ -33,7 +33,7 @@ module.exports = {
     reasons: true,
     errorDetails: true
   },
-  devtool: 'cheap-eval-source-map',
+  devtool: 'cheap-module-eval-source-map',
   module: {
     rules: [
       // absolutely necessary for font-awesome
