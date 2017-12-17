@@ -2,7 +2,7 @@
 reducer is just a function that takes state and action and returns a new state.
 */
 
-import { USER_LOGGED_IN } from './actions'
+import { USER_LOGGED_IN, USER_LOGGED_OUT } from './actions'
 
 /*
 
@@ -28,7 +28,13 @@ export default function user(state = {}, action = {}) {
   switch (action.type) {
     case USER_LOGGED_IN:
       return action.user
+    case USER_LOGGED_OUT:
+      return {}
     default:
       return state
   }
 }
+
+/*
+In the case where the user logs out, simply an empty object is returned to state. The state is stored in the store. This is usually the user object with properties like email, username, and password. Overriding that to an empty object is what you would expect for someone who is logged out and their information is no longer there.
+*/
