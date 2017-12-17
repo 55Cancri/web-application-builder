@@ -39,11 +39,11 @@ notice you are dispatching an action. That action "userLoggedIn" was imported fr
 
 //-----------------------
 
-STEP 2 (redux): Below is the login function that you used in the LoginPage component when the user clicks the submit button.
+STEP 2 (redux): Below is the login function that you used in the LoginPage component (./scenes/Login/index.jsx) when the user clicks the submit button.
 
-The login function takes the form data passed from the submit function ({ email: "", password: ""}) and then returns another function with the dispatch function passed in. Now both the credentials (form data) and the dispatch method can be used in the final resulting function.
+The login function takes the form data passed from the submit function ({ email: "", password: ""}) as the variable "credentials" and then returns another function with the dispatch function passed in. Now both the credentials (form data object) and the dispatch method can be used in the final resulting function body.
 
-In the body of the dispatch function, an api request is made. "api" is pulled in from the root directory of the global components folder ('../../components/api') and is where the requests (post in this case) is made with axios. Api is object that contains a property called "user". In that user property is a method called "login". That method is called here by using api.user.login(), and the credentials (form data) is passed on (again) as a parameter.
+In the body of the dispatch function, an api request is made. "api" is pulled in from the root directory of the global components folder ('../../components/api') and is where the requests (post in this case) is made with axios. Api is an object that contains a property called "user". In that user property is a method called "login". That method is called here by using api.user.login(), and the credentials (form data) is passed on (again) as a parameter.
 
 **GO TO: ../../components/api'**
 
@@ -53,7 +53,7 @@ export const login = credentials => dispatch =>
 api.user.login(credentials).then(user => dispatch(userLoggedIn(user)))
 
 /*
-STEP 4 (redux): If you recall from step 3 in api.js in the root directory of the components folder, we made a post request to the database, and then received a response containing the user data and the token. Now we have that, and now the the ".then()" part of the login function above executes. That information we received (res.data.user) is passed into the .then(0) chain in the variable "user".
+STEP 4 (redux): If you recall from step 3 in api.js (in the root directory of the components folder), we made a post request to the database, and then received a response containing the user data and the token. Now we have that data in the returned promise of "api.user.login(credentials)", and now the ".then()" part of the login function above executes. That information we received (res.data.user) is passed into the .then(*) chain in the variable "user".
 
 From there, the dispatch function is called, which dispatches the action "userLoggedIn", and sends the information from the server (user and token) as input.
 

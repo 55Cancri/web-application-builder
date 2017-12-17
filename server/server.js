@@ -10,6 +10,7 @@
 */
 import express from 'express'
 import path from 'path'
+import logger from 'morgan'
 import bodyParser from 'body-parser'
 import fs from 'fs'
 import historyApiFallback from 'connect-history-api-fallback'
@@ -35,6 +36,7 @@ mongoose.connect(isDev ? config.db_dev : config.db, {
 mongoose.Promise = global.Promise
 
 const app = express()
+app.use(logger('dev'))
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
@@ -62,6 +64,7 @@ if (isDev) {
       modules: false
     }
   }))
+
 
   app.use(webpackHotMiddleware(compiler))
   app.use(express.static(path.resolve(__dirname, '../dist')))

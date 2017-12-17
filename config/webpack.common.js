@@ -3,6 +3,8 @@ import autoprefixer from 'autoprefixer'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import ExtractTextPlugin from 'extract-text-webpack-plugin'
 import CopyWebpackPlugin from 'copy-webpack-plugin'
+import FriendlyErrorsPlugin from 'friendly-errors-webpack-plugin'
+
 
 import helpers from './helpers'
 
@@ -93,6 +95,10 @@ module.exports = {
     new webpack.optimize.ModuleConcatenationPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
+
+    new FriendlyErrorsPlugin({
+      clearConsole: false
+    }),
 
     new webpack.DefinePlugin({
       'process.env': {
