@@ -92,9 +92,7 @@ Recall that in the local state of this component, there are 3 properties: data, 
         {/*
           If global errors exist, spawn a message div. This will be for server-side errors.
         */}
-        { errors.global && <div className="error-popup">
-          <p>{errors.global}</p>
-        </div>}
+        { errors.global && <div className="error-overlay"><p>{errors.global}</p></div> }
         <h1>Login page</h1>
         <label htmlFor="email">Email</label>
         <input

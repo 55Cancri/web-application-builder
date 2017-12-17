@@ -21,6 +21,7 @@ import webpackHotMiddleware from 'webpack-hot-middleware'
 
 import config from '../config/config'
 import webpackConfig from '../webpack.config'
+import dotenv from 'dotenv'
 
 const isDev = process.env.NODE_ENV !== 'production'
 const port  = process.env.PORT || 8080
@@ -28,6 +29,9 @@ const port  = process.env.PORT || 8080
 
 // Configuration
 // ================================================================================================
+
+// environment variables
+dotenv.config()
 
 // Set up Mongoose
 mongoose.connect(isDev ? config.db_dev : config.db, {

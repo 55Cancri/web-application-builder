@@ -51,6 +51,12 @@ Of course, we have to assume there will be an error. The submit function below I
   }
 }
 
+/*
+STEP 9 (redux): Finally, once the credentials match up, the client side form validation passes, the server side mongoose query finds the user, and the data is sent back to the client in a res object, the user is redirected to the home page. That is what the ".then(() => this.props.history.push('/'))" does.
+
+*/
+
+
 
 /*
 This says history is a shape (?) and its push method must be a function and is required, and the login is function that is also required. Although the history object has many other methods, you only need to specify the ones that your component needs, which is just history.

@@ -49,8 +49,7 @@ In the body of the dispatch function, an api request is made. "api" is pulled in
 
 */
 
-export const login = credentials => dispatch =>
-api.user.login(credentials).then(user => dispatch(userLoggedIn(user)))
+export const login = credentials => dispatch => api.user.login(credentials).then(user => dispatch(userLoggedIn(user)))
 
 /*
 STEP 4 (redux): If you recall from step 3 in api.js (in the root directory of the components folder), we made a post request to the database, and then received a response containing the user data and the token. Now we have that data in the returned promise of "api.user.login(credentials)", and now the ".then()" part of the login function above executes. That information we received (res.data.user) is passed into the .then(*) chain in the variable "user".
